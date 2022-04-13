@@ -8,8 +8,10 @@ import java.util.Scanner;
 public class HashNote {
 	// store notes in a local hashmap instance
 	private HashMap<String, String> noteFiles;
+	Scanner inputSource;
 	
-	public HashNote() {
+	public HashNote(Scanner inputSource) {
+		this.inputSource = inputSource; 
 		noteFiles = new HashMap<String, String>();
 		writeNote("Sample Note", "This is a sample note for testing HashNote functionality.");
 	}
@@ -19,16 +21,12 @@ public class HashNote {
 	 * content as user input taken from STDIN, give appropriate feedback to user
 	 */
 	public void writeNote() {
-		Scanner input = new Scanner(System.in);
-		
-		String noteName = getLines("name", input);
-		String noteContent = getLines("content", input);
+		String noteName = getLines("name", inputSource);
+		String noteContent = getLines("content", inputSource);
 		
 		System.out.println("Your note:\n" + noteName + " : " + noteContent);
 		noteFiles.put(noteName, noteContent);
 		System.out.println("Note " + noteName + " saved successfully.");
-		
-		input.close();
 	}
 	
 	// Write a note to the current noteFiles HashMap, taking name and content as arguments
@@ -42,7 +40,7 @@ public class HashNote {
 		if(removedNote == null) {
 			System.out.println("Error, cannot delete note " + key + ", not found in notes.");
 		} else {
-			System.out.println("Note " + removedNote + " deleted.");
+			System.out.println("Note " + key + " deleted.");
 		}
 	}
 	
@@ -93,7 +91,7 @@ public class HashNote {
 	public String toString() {
 		String hashString = "Notes:\n";
 		for (String hashKey : this.noteFiles.keySet()) {
-			hashString += ("- " + hashKey + " Content: \n " + noteFiles.get(hashKey) + "\n ");
+			hashString += ("\n- " + hashKey + " Content: \n " + noteFiles.get(hashKey) + "\n ");
 		}
 		hashString += "\n========================================================"
 				+ "=========================";
