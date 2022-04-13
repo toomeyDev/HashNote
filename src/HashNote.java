@@ -38,10 +38,32 @@ public class HashNote {
 	
 	public void deleteNote(String key) {
 		Object removedNote = noteFiles.remove(key);
+		// ensure note is present in HashMap, otherwise print an error message
 		if(removedNote == null) {
 			System.out.println("Error, cannot delete note " + key + ", not found in notes.");
 		} else {
 			System.out.println("Note " + removedNote + " deleted.");
+		}
+	}
+	
+	public String getNote(String key) {
+		String note = noteFiles.get(key);
+		// ensure note is present in HashMap
+		if(note == null) {
+			return "Note not found";
+		} else {
+			return note;
+			//System.out.println(key + ":\n" + note);
+		}
+	}
+	
+	public void printNote(String key) {
+		Object note = noteFiles.get(key);
+		// ensure note is present in HashMap, otherwise print an error message
+		if(note == null) {
+			System.out.println("Error, cannot access note " + key + ", not found in notes.");
+		} else {
+			System.out.println(key + ":\n" + note);
 		}
 	}
 	
