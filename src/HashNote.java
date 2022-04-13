@@ -21,12 +21,8 @@ public class HashNote {
 	public void writeNote() {
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Enter note name: ");
-		// store note name to be used as hash key based on user input
-		String noteName = input.nextLine();
-		
-		System.out.print("Write note content: ");
-		String noteContent = input.nextLine();
+		String noteName = getLines("name", input);
+		String noteContent = getLines("content", input);
 		
 		System.out.println("Your note:\n" + noteName + " : " + noteContent);
 		noteFiles.put(noteName, noteContent);
@@ -34,7 +30,29 @@ public class HashNote {
 		
 		input.close();
 	}
+	
+	public String getLines(String mode, Scanner input) {
+		String outString = "";
 		
+		if(mode.equals("name")) {
+			System.out.print("Enter note name: ");
+			// store note name to be used as hash key based on user input
+			outString += input.nextLine();
+		}else if(mode.equals("content")) {
+			System.out.print("Write note content (enter '/q' or '/quit' to finish entry): ");
+			while(true) {
+				String uInput = input.nextLine();
+				if(uInput.equals("/q") || uInput.equals("/quit")) {
+					break;
+				} else {
+					outString += uInput;
+					outString += "\n";
+				}
+			}
+		}
+		return outString;
+	}
+	
 	// Write a note to the current noteFiles HashMap, taking name and content as arguments
 	public void writeNote(String noteName, String noteContent) {
 		noteFiles.put(noteName, noteContent);
@@ -44,9 +62,9 @@ public class HashNote {
 	public String toString() {
 		String hashString = "Notes:\n";
 		for (String hashKey : this.noteFiles.keySet()) {
-			hashString += ("- " + hashKey + " = " + noteFiles.get(hashKey) + "\n");
+			hashString += ("- " + hashKey + " Content: \n " + noteFiles.get(hashKey) + "\n ");
 		}
-		hashString += "========================================================"
+		hashString += "\n========================================================"
 				+ "=========================";
 		return hashString;
 	}
