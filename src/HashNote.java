@@ -31,6 +31,20 @@ public class HashNote {
 		input.close();
 	}
 	
+	// Write a note to the current noteFiles HashMap, taking name and content as arguments
+	public void writeNote(String noteName, String noteContent) {
+		noteFiles.put(noteName, noteContent);
+	}
+	
+	public void deleteNote(String key) {
+		Object removedNote = noteFiles.remove(key);
+		if(removedNote == null) {
+			System.out.println("Error, cannot delete note " + key + ", not found in notes.");
+		} else {
+			System.out.println("Note " + removedNote + " deleted.");
+		}
+	}
+	
 	public String getLines(String mode, Scanner input) {
 		String outString = "";
 		
@@ -51,11 +65,6 @@ public class HashNote {
 			}
 		}
 		return outString;
-	}
-	
-	// Write a note to the current noteFiles HashMap, taking name and content as arguments
-	public void writeNote(String noteName, String noteContent) {
-		noteFiles.put(noteName, noteContent);
 	}
 	
 	@Override

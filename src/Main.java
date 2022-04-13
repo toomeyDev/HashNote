@@ -6,5 +6,6 @@ public class Main {
 		HashNote notes = new HashNote();
 		notes.writeNote();
 		System.out.println(notes);
+		notes.deleteNote("spaghetti");
 	}
 }
