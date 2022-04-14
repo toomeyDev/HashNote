@@ -40,6 +40,9 @@ public class Main {
 				case "save":
 					notesApp.saveNotes();
 					break;
+				case "load":
+					notesApp.loadNotes();
+					break;
 				case "quit":
 					System.out.println("Exiting..");
 					runTime = false;

@@ -1,5 +1,6 @@
 /* Class for handling file IO of individual notes to local filesystem */
 import java.io.FileWriter;
+import java.util.Scanner;
 import java.io.IOException;
 import java.util.HashMap;
 public abstract class NoteIO {
@@ -30,5 +31,19 @@ public abstract class NoteIO {
 		}
 	}
 	
+	/*
+	 * load an individual note from the local filesystem
+	 * into passed notes hash (currently only checks application folder)
+	 */
+	public static void readNoteFromFile(java.util.HashMap<String, String> notesHash,
+			String fileName) {
+				Scanner noteReader = new Scanner(fileName);
+				String noteContents = "";
+				while (noteReader.hasNextLine()) {
+					noteContents += noteReader.nextLine();
+				}
+				notesHash.put(fileName, noteContents);
+				System.out.println("Loaded note from file " + fileName + " successfully.");
+	}
 	
 }

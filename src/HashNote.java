@@ -13,7 +13,6 @@ public class HashNote {
 	public HashNote(Scanner inputSource) {
 		this.inputSource = inputSource; 
 		noteFiles = new HashMap<String, String>();
-		writeNote("Sample Note", "This is a sample note for testing HashNote functionality.");
 	}
 	
 	/* 
@@ -59,6 +58,11 @@ public class HashNote {
 		System.out.println("Saving notes to local disk...");
 		NoteIO.saveNotesToDisk(noteFiles);
 		System.out.println("Notes written to local disk...");
+	}
+	
+	public void loadNotes() {
+		System.out.println("Loading notes from local disk...");
+		NoteIO.readNoteFromFile(noteFiles, "Sample Note");
 	}
 	
 	public void printNote(String key) {
