@@ -14,8 +14,8 @@ public class Main {
 		// display an info message for the user at start with command descriptions
 		System.out.println("Type 'write' to start writing a new note,\n"
 				+ "'list' to display all stored notes, 'get' to print\n"
-				+ "a note to the screen, 'delete' to delete a note   \n"
-				+ "from the program or quit to exit");
+				+ "a note to the screen, 'save' to save all notes to disk\n"
+				+ "'delete' to delete a note from the program or quit to exit");
 		
 		while(runTime) {
 			System.out.print("\nSelection: ");
@@ -36,6 +36,9 @@ public class Main {
 					System.out.print("\nEnter note name for deletion: ");
 					String uDelete = scInput.nextLine();
 					notesApp.deleteNote(uDelete);
+					break;
+				case "save":
+					notesApp.saveNotes();
 					break;
 				case "quit":
 					System.out.println("Exiting..");

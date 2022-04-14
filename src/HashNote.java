@@ -52,8 +52,13 @@ public class HashNote {
 			return "Note not found";
 		} else {
 			return note;
-			//System.out.println(key + ":\n" + note);
 		}
+	}
+	
+	public void saveNotes() {
+		System.out.println("Saving notes to local disk...");
+		NoteIO.saveNotesToDisk(noteFiles);
+		System.out.println("Notes written to local disk...");
 	}
 	
 	public void printNote(String key) {
