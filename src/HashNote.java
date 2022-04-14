@@ -9,7 +9,7 @@ public class HashNote {
 	// store notes in a local hashmap instance
 	private HashMap<String, String> noteFiles;
 	Scanner inputSource;
-	
+
 	public HashNote(Scanner inputSource) {
 		this.inputSource = inputSource; 
 		noteFiles = new HashMap<String, String>();
@@ -26,6 +26,7 @@ public class HashNote {
 		
 		System.out.println("Your note:\n" + noteName + " : " + noteContent);
 		noteFiles.put(noteName, noteContent);
+		NoteIO.writeNoteToFile(noteName, noteContent);
 		System.out.println("Note " + noteName + " saved successfully.");
 	}
 	
