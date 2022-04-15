@@ -56,6 +56,7 @@ public class HashNote {
 	
 	public void saveNotes() {
 		System.out.println("Saving notes to local disk...");
+		// should output message if notes directory was created
 		NoteIO.saveNotesToDisk(noteFiles);
 		System.out.println("Notes written to local disk...");
 	}

@@ -24,3 +24,7 @@ hs_err_pid*
 
 # eclipse files
 .metadata/
+
+# created application files (/notes, .txt files etc)
+/notes
+*.txt

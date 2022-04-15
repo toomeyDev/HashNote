@@ -47,6 +47,10 @@ public class Main {
 					System.out.println("Exiting..");
 					runTime = false;
 					break;
+				case "exit":
+					System.out.println("Exiting..");
+					runTime = false;
+					break;
 				default:
 					System.out.println("Invalid input, please try again.");
 					break;
