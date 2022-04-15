@@ -13,6 +13,7 @@ public class HashNote {
 	public HashNote(Scanner inputSource) {
 		this.inputSource = inputSource; 
 		noteFiles = new HashMap<String, String>();
+		NoteIO.loadLocalNotes(noteFiles);
 	}
 	
 	/* 
@@ -26,7 +27,7 @@ public class HashNote {
 		System.out.println("Your note:\n" + noteName + " : " + noteContent);
 		noteFiles.put(noteName, noteContent);
 		NoteIO.writeNoteToFile(noteName, noteContent);
-		System.out.println("Note " + noteName + " saved successfully.");
+		System.out.println("\nNote " + noteName + " saved successfully.");
 	}
 	
 	// Write a note to the current noteFiles HashMap, taking name and content as arguments
@@ -63,7 +64,7 @@ public class HashNote {
 	
 	public void loadNotes() {
 		System.out.println("Loading notes from local disk...");
-		NoteIO.readNoteFromFile(noteFiles, "Sample Note");
+		NoteIO.loadLocalNotes(noteFiles);
 	}
 	
 	public void printNote(String key) {
